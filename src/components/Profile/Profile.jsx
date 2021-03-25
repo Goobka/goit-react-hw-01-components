@@ -1,33 +1,31 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import './Profile.css'; // Implementation of vanilla css
 
 class Profile extends Component {
   render() {
+    const user = this.props;
     return (
       <div className="profile">
         <div className="description">
-          <img
-            src={this.props.avatar}
-            alt="Аватар пользователя"
-            className="avatar"
-          />
-          <p className="name">{this.props.name}</p>
-          <p className="tag">@{this.props.tag}</p>
-          <p className="location">{this.props.location}</p>
+          <img src={user.avatar} alt="Аватар пользователя" className="avatar" />
+          <p className="name">{user.name}</p>
+          <p className="tag">@{user.tag}</p>
+          <p className="location">{user.location}</p>
         </div>
 
         <ul className="stats">
           <li>
             <span className="label">Followers</span>
-            <span className="quantity">{this.props.stats.followers}</span>
+            <span className="quantity">{user.stats.followers}</span>
           </li>
           <li>
             <span className="label">Views</span>
-            <span className="quantity">{this.props.stats.views}</span>
+            <span className="quantity">{user.stats.views}</span>
           </li>
           <li>
             <span className="label">Likes</span>
-            <span className="quantity">{this.props.stats.likes}</span>
+            <span className="quantity">{user.stats.likes}</span>
           </li>
         </ul>
       </div>

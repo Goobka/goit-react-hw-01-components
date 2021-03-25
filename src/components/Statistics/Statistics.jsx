@@ -8,10 +8,28 @@ function randomColor(color) {
   return '#' + r + g + b;
 }
 
+// Implementation of css inline styles (bad practice)
+const styles = {
+  section: {
+    textAlign: 'center',
+    marginBottom: 40,
+  },
+  item: {
+    display: 'inline-block',
+    textAlign: 'center',
+    width: 80,
+    height: 80,
+    padding: 20,
+  },
+  label: {
+    display: 'block',
+  },
+};
+
 class Statistics extends Component {
   render() {
     return (
-      <section className="statistics">
+      <section className="statistics" style={styles.section}>
         <h2 className="title">{this.props.title}</h2>
 
         <ul className="stat-list">
@@ -20,9 +38,11 @@ class Statistics extends Component {
               <li
                 key={el.id}
                 className="item"
-                style={{ backgroundColor: `${randomColor()}` }}
+                style={{ ...styles.item, backgroundColor: `${randomColor()}` }}
               >
-                <span className="label">{el.label}</span>
+                <span className="label" style={styles.label}>
+                  {el.label}
+                </span>
                 <span className="percentage">{el.percentage}%</span>
               </li>
             ))}
